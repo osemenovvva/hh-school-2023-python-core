@@ -23,7 +23,7 @@ class Market:
 
         :return: list
         """
-        return sorted(self.drink_titles)
+        return sorted(self.drinks, key=lambda drink: drink.title)
 
     @logger_decorator
     def get_drinks_by_production_date(self, from_date=None, to_date=None) -> list:
@@ -33,8 +33,10 @@ class Market:
         :return: list
         """
         drinks_by_date = []
+        
         for drink in self.drinks:
-            if None not in (drink.production_date, from_date, to_date):
+            dates_to_check = [drink.production_date, from_date, to_date]
+            if not any(date is None for date in dates_to_check): 
                 if datetime.strptime(to_date, "%d.%m.%Y") >= drink.production_date >= datetime.strptime(from_date, "%d.%m.%Y"):
                     drinks_by_date.append(drink)
         

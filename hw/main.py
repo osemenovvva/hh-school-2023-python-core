@@ -32,7 +32,7 @@ if __name__ == '__main__':
     # Вывод списка напитков
     drinks_sorted_by_title = market.get_drinks_sorted_by_title()
     for drink in drinks_sorted_by_title:
-        print(drink)
+        print(drink.title)
     
     # Вывод напитков по дате
     drinks_by_date_test1 = market.get_drinks_by_production_date('01.05.2023', '20.10.2023')
