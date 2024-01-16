@@ -36,7 +36,7 @@ class Market:
         
         for drink in self.drinks:
             dates_to_check = [drink.production_date, from_date, to_date]
-            if not any(date is None for date in dates_to_check): 
+            if all(dates_to_check): 
                 if datetime.strptime(to_date, "%d.%m.%Y") >= drink.production_date >= datetime.strptime(from_date, "%d.%m.%Y"):
                     drinks_by_date.append(drink)
         
